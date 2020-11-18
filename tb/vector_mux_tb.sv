@@ -1,0 +1,28 @@
+module vector_mux_tb();
+
+	logic [31:0] vin11, vin12, vin13, vin14, vin21, vin22, vin23, vin24, vout1, vout2, vout3, vout4;
+	logic control;
+	
+	vector_mux uut(vin11, vin12, vin13, vin14, vin21, vin22, vin23, vin24, control,
+						vout1, vout2, vout3, vout4);
+						
+	initial begin
+	
+	#10 vin11 <= 32'b01000001101110100110011001100110;
+	vin12 <= 32'b00111111100110011001100110011010;
+	vin13 <= 32'b01000000011001100110011001100110;
+	vin14 <= 32'b01000000101110011001100110011010;
+	
+	vin21 <= 32'b01000000110111001100110011001101;
+	vin22 <= 32'b01000010010110011001100110011010;
+	vin23 <= 32'b01000010110001111100110011001101;
+	vin24 <= 32'b01000001011011001100110011001101;
+	
+	control <= 0;
+	
+	#10;
+	#10 control <= 1;
+	#10;
+	end
+
+endmodule
